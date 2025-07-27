@@ -102,6 +102,7 @@ vim.g.have_nerd_font = true
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
+<<<<<<< HEAD
 vim.opt.relativenumber = true
 
 -- Disabled incase some languages want different, example latex
@@ -577,6 +578,7 @@ require('lazy').setup({
           --  the definition of its *type*, not where it was *defined*.
           map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
 
+<<<<<<< HEAD
           -- Fuzzy find all the symbols in your current document.
           --  Symbols are things like variables, functions, types, etc.
           map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
@@ -598,6 +600,7 @@ require('lazy').setup({
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+=======
           -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
           ---@param client vim.lsp.Client
           ---@param method vim.lsp.protocol.Method
@@ -610,6 +613,7 @@ require('lazy').setup({
               return client.supports_method(method, { bufnr = bufnr })
             end
           end
+>>>>>>> upstream/master
 
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
@@ -742,16 +746,19 @@ require('lazy').setup({
       -- other tools, you can run
       --    :Mason
       --
+<<<<<<< HEAD
       --  You can press `g?` for help in this menu.
       require('mason').setup {
         PATH = 'append',
       }
 
+=======
       -- You can press `g?` for help in this menu.
       --
       -- `mason` had to be setup earlier: to configure its options see the
       -- `dependencies` table for `nvim-lspconfig` above.
       --
+>>>>>>> upstream/master
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
@@ -935,10 +942,14 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+<<<<<<< HEAD
       vim.cmd.colorscheme 'kanagawa'
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
+=======
+      vim.cmd.colorscheme 'tokyonight-night'
+>>>>>>> upstream/master
     end,
   },
   {
