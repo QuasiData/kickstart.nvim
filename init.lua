@@ -909,6 +909,13 @@ require('lazy').setup({
       -- directly inside the plugin declaration.
     end,
   },
+  {
+    'vague2k/vague.nvim',
+    config = function()
+      vim.cmd.colorscheme 'vague'
+      require('vague').setup {}
+    end,
+  },
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
