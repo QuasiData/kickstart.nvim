@@ -108,8 +108,9 @@ vim.o.number = true
 vim.opt.relativenumber = true
 
 -- Disabled incase some languages want different, example latex
--- vim.opt.shiftwidth = 4
--- vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.expandtab = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -706,7 +707,7 @@ require('lazy').setup({
             '--all-scopes-completion',
             '--clang-tidy',
             '--background-index',
-            '--header-insertion=iwyu',
+            '--header-insertion=never',
             '--offset-encoding=utf-8',
           },
         },
@@ -714,7 +715,7 @@ require('lazy').setup({
         pyright = {},
         rust_analyzer = {},
         zls = {},
-        texlab = {},
+        -- hls = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -1069,7 +1070,7 @@ require('lazy').setup({
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   -- require 'kickstart.plugins.debug',
-  require 'kickstart.plugins.indent_line',
+  -- require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
