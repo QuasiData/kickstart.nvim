@@ -715,7 +715,7 @@ require('lazy').setup({
         pyright = {},
         rust_analyzer = {},
         zls = {},
-        -- hls = {},
+        hls = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -762,6 +762,7 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'fourmolu',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -814,6 +815,7 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        haskell = { 'fourmolu' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -930,8 +932,9 @@ require('lazy').setup({
     'rebelot/kanagawa.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
+      vim.cmd.colorscheme 'kanagawa'
       ---@diagnostic disable-next-line: missing-fields
-      require('tokyonight').setup {
+      require('kanagawa').setup {
         styles = {
           comments = { italic = false }, -- Disable italics in comments
         },
@@ -981,10 +984,9 @@ require('lazy').setup({
   },
   {
     'vague2k/vague.nvim',
-    config = function()
-      vim.cmd.colorscheme 'vague'
-      require('vague').setup {}
-    end,
+    lazy = false,
+    priority = 1000,
+    config = function() end,
   },
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
