@@ -716,6 +716,7 @@ require('lazy').setup({
         rust_analyzer = {},
         zls = {},
         hls = {},
+        markdown_oxide = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -763,6 +764,7 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'fourmolu',
+        'markdownlint',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
