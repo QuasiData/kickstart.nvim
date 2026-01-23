@@ -934,7 +934,7 @@ require('lazy').setup({
     'rebelot/kanagawa.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
-      vim.cmd.colorscheme 'kanagawa'
+      ---vim.cmd.colorscheme 'kanagawa'
       ---@diagnostic disable-next-line: missing-fields
       require('kanagawa').setup {
         styles = {
@@ -988,7 +988,9 @@ require('lazy').setup({
     'vague2k/vague.nvim',
     lazy = false,
     priority = 1000,
-    config = function() end,
+    config = function()
+      vim.cmd.colorscheme 'vague'
+    end,
   },
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
@@ -1035,22 +1037,40 @@ require('lazy').setup({
   },
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    lazy = false,
     build = ':TSUpdate',
-    main = 'nvim-treesitter', -- Sets main module to use for opts
-    -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-    opts = {
-      ensure_installed = { 'cpp', 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
-      -- Autoinstall languages that are not installed
-      auto_install = true,
-      highlight = {
-        enable = true,
-        -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-        --  If you are experiencing weird indenting issues, add the language to
-        --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-        additional_vim_regex_highlighting = { 'ruby' },
-      },
-      indent = { enable = true, disable = { 'ruby' } },
-    },
+    -- main = 'nvim-treesitter', -- Sets main module to use for opts
+    -- -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+    -- opts = {
+    --   ensure_installed = {
+    --     'cpp',
+    --     'bash',
+    --     'c',
+    --     'diff',
+    --     'html',
+    --     'lua',
+    --     'luadoc',
+    --     'markdown',
+    --     'markdown_inline',
+    --     'query',
+    --     'vim',
+    --     'vimdoc',
+    --     'haskell',
+    --     'zig',
+    --     'rust',
+    --     'python',
+    --   },
+    --   -- Autoinstall languages that are not installed
+    --   auto_install = true,
+    --   highlight = {
+    --     enable = true,
+    --     -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
+    --     --  If you are experiencing weird indenting issues, add the language to
+    --     --  the list of additional_vim_regex_highlighting and disabled languages for indent.
+    --     additional_vim_regex_highlighting = { 'ruby' },
+    --   },
+    --   indent = { enable = true, disable = { 'ruby' } },
+    -- },
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
     --
@@ -1110,6 +1130,12 @@ require('lazy').setup({
       lazy = '💤 ',
     },
   },
+})
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'haskell', 'cpp', 'c', 'rust', 'zig', 'python' },
+  callback = function()
+    vim.treesitter.start()
+  end,
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
