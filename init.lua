@@ -844,15 +844,15 @@ require('lazy').setup({
   {
     'rebelot/kanagawa.nvim',
     priority = 1000,
-    config = function()
-      -- vim.cmd.colorscheme 'kanagawa-wave'
-    end,
+    config = function() vim.cmd.colorscheme 'kanagawa-wave' end,
   },
 
   {
     'vague2k/vague.nvim',
     priority = 1000,
-    config = function() vim.cmd.colorscheme 'vague' end,
+    config = function()
+      -- vim.cmd.colorscheme 'vague'
+    end,
   },
 
   -- Highlight todo, notes, etc in comments
